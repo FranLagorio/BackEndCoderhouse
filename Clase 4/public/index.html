@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      
+</head>
+<body>
+      <form id="form" method="POST" action="/public">
+            <label>FORMULARIO POST</label>
+            <br>
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Title"></>
+            <label>Price</label>
+            <input type="text" name="price" placeholder="Price"></>
+            <label>Thumbnail</label>
+            <input type="text" name="thumbnail" placeholder="Thumbnail"></>
+            <!-- <button > Enviar</button> -->
+            <input type="submit" value="AGREGAR PRODUCTO">
+      </form>
+<br>
+      <form id="formPut" method="POST" action="/public">
+            <input type="hidden" name="_method" value="PUT">
+            <label>FORMULARIO PUT</label><br>
+            <label>ID</label>
+            <input type="number" id="id" name="id" placeholder="ID"></>
+            <button id="searchId" > MODIFICAR PRODUCTO </button>
+            <label>Title</label>
+            <input type="text" name="title" id ="titlePut" placeholder="Title"></>
+            <label>Price</label>
+            <input type="text" name="price" id ="pricePut" placeholder="Price"></>
+            <label>Thumbnail</label>
+            <input type="text" name="thumbnail" id ="thumbnailPut" placeholder="Thumbnail"></>
+            <!-- <button > Enviar</button> -->
+            <!-- <input type="submit" value="MODIFICAR PRODUCTO"> -->
+      </form>
+      <!-- <div>
+            <p>Los datos a ingresar son:</p>
+            <p id="title"></p>
+      </div> -->
+      <!-- <script>
+            const form = document.getElementById("form");
+            const title = document.getElementById("title");
+            // function renderTitle (formData) {
+            // const titleGet = formData.get("title")
+            // title.textContent = titleGet
+            // }
+            form.addEventListener("submit", (event) => {
+                  event.preventDefault();
+                  const formData = new FormData(event.currentTarget)
+                  // renderTitle(formData)
+                  fetch("http://localhost:8080",{
+                        method: "POST",
+                        body: formData
+                  })
+            })
+      </script> -->
+
+      <script type="module" src="buttonPut.js"></script>
+
+      
+</body>
+</html>

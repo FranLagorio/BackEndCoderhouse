@@ -1,11 +1,12 @@
-// function main() {
-// 	let x = 3;
-// 	(function main2() {
-// 		return x * 2;
-// 	})();
-// }
-// console.log(main());
-// console.log(x);
+const x = 3;
+const y = 5;
+function main() {
+	const x = 6;
+	console.log(x);
+	return x;
+}
+console.log(main());
+console.log(x, y);
 
 // async function main() {
 // 	function main2() {
@@ -17,9 +18,9 @@
 
 // main().then(() => console.log("fin"));
 
-let min = 0;
-let max = 2;
+// let min = 0;
+// let max = 2;
 
-let randomNum = Math.floor(Math.random() * (max - min + 1));
+// let randomNum = Math.floor(Math.random() * (max - min + 1));
 
-console.log(randomNum);
+// console.log(randomNum);
