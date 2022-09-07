@@ -1,0 +1,6 @@
+mongod --dbpath C:\Users\FranLagorio\Desktop\miBaseMongo
+le agregas --auth
+
+
+
+db.clientes.insert([{nombre: "Fran", edad:27},{nombre: "Caro", edad:25},{nombre: "Jorge", edad:64}])
