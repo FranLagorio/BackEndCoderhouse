@@ -41,7 +41,21 @@ const server = app.listen(PORT, () => {
 server.on("error", (error) => console.log(`Error on Server: ${error}`));
 
 //Variable Admins
-let isAdmin = true;
+let isAdmin = false;
+
+// Middleware isAdmin
+
+const checkAdmin = (req, res, next) => {
+  if (isAdmin) {
+    next();
+    return;
+  } else {
+    res.status(403).send({
+      error: -1,
+      descripcion: `ruta ${req.baseUrl} método ${req.method} no autorizada`,
+    });
+  }
+};
 
 //Ruta de acceso a html (no aplica a este ejercicio)
 app.get("/public", (req, res) => {
@@ -64,84 +78,44 @@ routerProducts.get("/:id", (req, res) => {
 });
 
 ///////// POST -- Solo para Admins
-routerProducts.post(
-  "/",
-  (req, res, next) => {
-    if (!isAdmin) {
-      res.send({
-        error: -1,
-        descripcion: `ruta ${req.baseUrl} método ${req.method} no autorizada`,
-      });
-    } else {
-      next();
-    }
-  },
-  (req, res) => {
-    const { body } = req;
-    //Check de si estan todas las props necesarias
-    let keys = Object.keys(body);
-    let check = (arr, target) => target.every((e) => arr.includes(e));
-    let validation = check(keys, necessaryProps);
+routerProducts.post("/", checkAdmin, (req, res) => {
+  const { body } = req;
+  //Check de si estan todas las props necesarias
+  let keys = Object.keys(body);
+  let check = (arr, target) => target.every((e) => arr.includes(e));
+  let validation = check(keys, necessaryProps);
 
-    if (validation) {
-      fileManager.saveProduct(body);
-      let products = fileManager.getAll();
-      res.json(products);
-    } else {
-      res.json("Las props no son iguales");
-    }
+  if (validation) {
+    fileManager.saveProduct(body);
+    let products = fileManager.getAll();
+    res.json(products);
+  } else {
+    res.json("Las props no son iguales");
   }
-);
+});
 
 ///////// PUT - Product
-routerProducts.put(
-  "/:id",
-  (req, res, next) => {
-    if (!isAdmin) {
-      res.send({
-        error: -1,
-        descripcion: `ruta ${req.baseUrl} método ${req.method} no autorizada`,
-      });
-    } else {
-      next();
-    }
-  },
-  (req, res) => {
-    const { id } = req.params;
-    const { body } = req;
-    let puttedProduct = fileManager.updateById(id, body);
-    res.json(puttedProduct);
-  }
-);
+routerProducts.put("/:id", checkAdmin, (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  let puttedProduct = fileManager.updateById(id, body);
+  res.json(puttedProduct);
+});
 
 ///////// DELETE By ID
-routerProducts.delete(
-  "/:id",
-  (req, res, next) => {
-    if (!isAdmin) {
-      res.send({
-        error: -1,
-        descripcion: `ruta ${req.baseUrl} método ${req.method} no autorizada`,
-      });
-    } else {
-      next();
-    }
-  },
-  (req, res) => {
-    const { id } = req.params;
-    let deletedProduct = fileManager.deleteById(id);
-    res.json(deletedProduct);
-  }
-);
+routerProducts.delete("/:id", checkAdmin, (req, res) => {
+  const { id } = req.params;
+  let deletedProduct = fileManager.deleteById(id);
+  res.json(deletedProduct);
+});
 
 ///////// CARRITO
 
 ///////// GET
-routerShopCart.get("/:id", (req, res) => {
-  const { id } = req.params;
-
-  res.json("hola");
-});
+// routerShopCart.get("/:id", (req, res) => {
+//   const { id } = req.params;
+//   res.json("hola");
+// });
 
 ///////// POST EMPTY CART
 routerShopCart.post("/", (req, res) => {

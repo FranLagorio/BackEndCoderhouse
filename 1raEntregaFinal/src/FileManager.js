@@ -45,7 +45,7 @@ class FileManager {
         productList.push(newObj);
         const productsJson = JSON.stringify(productList, null, 2);
         fs.writeFileSync(this.file, productsJson);
-        console.log(`Se ha agregado ${newObj.title} como un nuevo producto`);
+        console.log(`Se ha agregado ${newObj.name} como un nuevo producto`);
         return productList;
         //
       } else {
