@@ -111,7 +111,7 @@ class CartManager {
     return cartList;
   };
 
-  deleteProdInCart = (id, id_prod) => {
+  deleteProdInCart = (id, idProd) => {
     let cartList = this.getAll();
 
     //busco el index del carrito
@@ -119,7 +119,7 @@ class CartManager {
 
     //dentro del carrito busco el index del producto
     let indexProd = cartList[selectedCart].productos.findIndex(
-      (e) => e.id == id_prod
+      (e) => e.id == idProd
     );
 
     //si encuentro el producto lo elimino

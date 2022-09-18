@@ -1,5 +1,4 @@
 //Import de librerias
-const fs = require("fs");
 const express = require("express");
 
 //Import de Clases
@@ -163,9 +162,9 @@ routerShopCart.post("/:id/productos", (req, res) => {
 });
 
 ///////// DELETE PRODUCTS IN CART By ID
-routerShopCart.delete("/:id/productos/:id_prod", (req, res) => {
-  const { id, id_prod } = req.params;
-  let newCartList = cartManager.deleteProdInCart(id, id_prod);
+routerShopCart.delete("/:id/productos/:idProd", (req, res) => {
+  const { id, idProd } = req.params;
+  let newCartList = cartManager.deleteProdInCart(id, idProd);
   res.json(newCartList);
 });
 
