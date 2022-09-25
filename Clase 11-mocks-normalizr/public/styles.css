@@ -1,0 +1,36 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Calibri";
+  min-height: 100vh;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+
+table {
+  /* no es responsive poner fixed */
+  table-layout: fixed;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.product-img {
+  width: 50%;
+}
+
+.footer {
+  height: 5rem;
+  font-size: 2rem;
+  color: red;
+}
+
+a:hover {
+  font-weight: bold;
+  background: rgba(1, 1, 1, 0.5);
+}
