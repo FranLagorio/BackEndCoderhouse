@@ -1,10 +1,11 @@
-html {
-  font-size: 16px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body {
+html body {
+  font-size: 16px;
   font-family: "Calibri";
-  min-height: 100vh;
 }
 
 a {
@@ -21,13 +22,13 @@ table {
 }
 
 .product-img {
-  width: 50%;
+  width: 20%;
 }
 
 .footer {
   height: 5rem;
   font-size: 2rem;
-  color: red;
+  color: blueviolet;
 }
 
 a:hover {
