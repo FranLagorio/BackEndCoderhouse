@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-function createNFakeProducts(n = 5) {
+export default function createNFakeProducts(n = 5) {
   let products = [];
   for (let i = 0; i < n; i++) {
     products.push({
@@ -12,5 +12,3 @@ function createNFakeProducts(n = 5) {
   }
   return products;
 }
-
-export default createNFakeProducts;

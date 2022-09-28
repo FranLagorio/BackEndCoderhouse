@@ -1,11 +1,14 @@
 const socket = io();
 
-socket.on("connect", () => {
-  console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-});
+import { denormalize } from "./functions.js";
 
-function enviarChat() {
-  const mensaje = {
+// socket.on("connect", () => {
+//   console.log(socket.id);
+// });
+
+const button = document.getElementById("submitMessage");
+button.addEventListener("click", (e) => {
+  const message = {
     author: {
       id: document.getElementById("email").value,
       nombre: document.getElementById("nombre").value,
@@ -16,36 +19,37 @@ function enviarChat() {
     },
     text: document.getElementById("caja-msg").value,
   };
-  socket.emit("nuevo-mensaje", mensaje);
+  socket.emit("new-message", JSON.stringify(message));
   document.getElementById("caja-msg").value = "";
-}
-
-socket.on("mensajes", (data) => {
-  //const html = data.reduce((html, item) => `<div>${item}</div>` + html, "");
-  document.getElementById("div-chats").innerHTML = data;
 });
 
-// MENSAJES
+socket.on("messages", (data) => {
+  let denormalizedChats = denormalize(data);
+  let compression =
+    (JSON.stringify(denormalizedChats).length / JSON.stringify(data).length) *
+    100;
+  document.getElementById(
+    "div-compres"
+  ).innerText = `El porcentaje de compresion es %${compression
+    .toString()
+    .slice(0, 5)}`;
 
-/* --------------------- DESNORMALIZACIÓN DE MENSAJES ---------------------------- */
-// Definimos un esquema de autor
-// const schemaAuthor = new normalizr.schema.Entity(
-//   "author",
-//   {},
-//   { idAttribute: "id" }
-// );
+  const add = denormalizedChats.chats
+    .map((chat) => {
+      let time = new Date(chat.timestamp);
+      let formatedTime = time
+        .toISOString()
+        .replace(/([^T]+)T([^\.]+).*/g, "$1 $2");
+      return `
+  <p>
+  <span style="color: blue;">${chat.author.id}</span>
+  <span style="color: brown;">[${formatedTime}]: </span>
+  <span style="color: green;">${chat.text}</span>
+  <img class='avatar' style="width:3rem" src='${chat.author.avatar}'></img>
+  </p>
+  `;
+    })
+    .join(" ");
 
-// // Definimos un esquema de mensaje
-// const schemaMensaje = new normalizr.schema.Entity(
-//   "post",
-//   { author: schemaAuthor },
-//   { idAttribute: "_id" }
-// );
-
-// // Definimos un esquema de posts
-// const schemaMensajes = new normalizr.schema.Entity(
-//   "posts",
-//   { mensajes: [schemaMensaje] },
-//   { idAttribute: "id" }
-// );
-// /* ----------------------------------------------------------------------------- */
+  document.getElementById("div-chats").innerHTML = add;
+});

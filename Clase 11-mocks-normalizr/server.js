@@ -1,7 +1,7 @@
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import addMensajesSocketsHandler from "./routes/mensajes.js";
+// import configurarSocket from "./routes/mensajes.js";
 import productosApiRouter from "./routes/product.js";
 
 //Creacion de Servidor y Sockets
@@ -17,16 +17,29 @@ httpServer.listen(process.env.PORT || PORT, () =>
 httpServer.on("error", (error) => console.log(`Error en servidor ${error}`));
 
 //Configuro Servidor
-app.use(express.static("public"));
+//dirname
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = dirname(__filename);
+app.use(express.static(__dirname + "/public"));
+//app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use("/api/products-test", productosApiRouter);
 
 //ruta de servidor Api Rest
-app.use(productosApiRouter);
-
-//Configuro Socket
-io.on("connection", async (socket) => {
-  console.log("Nuevo Cliente Conectado: " + socket.id);
-  addMensajesSocketsHandler(socket, io.sockets);
+app.use("/", (req, res) => {
+  res.render("pages/home", { name: "Francisco" });
 });
+
+//Configuracion de Socket
+import { socketModel } from "./src/utils/socket.js";
+socketModel(io);
+
+// app.all("*", (req, res) => {
+//   res.status(404).send("Ruta no encontrada");
+// });
