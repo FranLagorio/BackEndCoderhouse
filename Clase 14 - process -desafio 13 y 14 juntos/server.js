@@ -15,7 +15,8 @@ import {
   infoRouter,
 } from "./routes/index.js";
 
-import { PORT } from "./config.js";
+//////////////////////// VARIABLES DE ENTORNO
+import { PORT, MONGOPSW } from "./config.js";
 
 //////////////////////// Login
 import passport from "passport";
@@ -37,7 +38,7 @@ const __dirname = dirname(__filename);
 //////////////////////// CONECCION BASE DE DATOS
 mongoose
   .connect(
-    "mongodb+srv://franchas123:fran123@cluster0.zqkvn9v.mongodb.net/?retryWrites=true&w=majority",
+    `mongodb+srv://franchas123:${MONGOPSW}@cluster0.zqkvn9v.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true }
   )
   .then(() => console.log("Connected to Mongo Atlas"));
