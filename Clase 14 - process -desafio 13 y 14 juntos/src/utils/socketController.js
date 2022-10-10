@@ -8,7 +8,7 @@ export const socketController = (io) => {
     console.log("Nuevo Cliente Conectado: " + socket.id);
     io.sockets.emit(
       "messages",
-      normalizeMessages(await messagesController.getAll())
+      normalizeMessages(await messagesController.getAll({ sort: true }))
     );
     //queda escuchando el siguiente socket, socket es el usuario/cliente
     socket.on("new-message", async (msjClient) => {

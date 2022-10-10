@@ -1,32 +1,32 @@
-export const loginController = {
+export const signupController = {
   get: (req, res) => {
     try {
       if (req.isAuthenticated()) {
         res.redirect("/home");
       } else {
-        res.render("pages/login");
+        res.render("pages/signup");
       }
     } catch (error) {
       return res
         .status(500)
-        .send({ status: "Get page Log In error", body: error });
+        .send({ status: "Get page Sign Up error", body: error });
     }
   },
-  postLogin: (req, res) => {
+  postsignup: (req, res) => {
     try {
       const { username } = req.user;
       req.session.username = username;
       res.redirect("/home");
     } catch (error) {
-      return res.status(500).send({ status: "Log In error", body: error });
+      return res.status(500).send({ status: "Sign Up error", body: error });
     }
   },
 
-  errorLogin: (req, res) => {
+  errorSignup: (req, res) => {
     try {
-      res.render("pages/errorLogin");
+      res.render("pages/errorSignup");
     } catch (error) {
-      res.status(500).send({ status: "Log In error", body: error });
+      res.status(500).send({ status: "Sign Up error", body: error });
     }
   },
 };

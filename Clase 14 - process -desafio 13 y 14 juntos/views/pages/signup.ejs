@@ -10,45 +10,47 @@
   <title>CursoBackEnd</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 ">
   <header>
     <%- include('../partials/navbar')%>
   </header>
-  <div class="container d-flex flex-column w-25 h-50 mt-auto bg-primary bg-opacity-10 p-5 rounded">
-    <h1 class="text-center text-uppercase"> BIENVENIDO
+  <div class="container d-flex flex-column w-25 h-50 mt-auto bg-success text-dark bg-opacity-25 p-5 rounded">
+    <h1 class="text-center text-uppercase"> REGISTRARSE
     </h1>
 
     <h3 id="div-compres" class="text-center"></h3>
 
     <form action="" method="post">
       <div id="login-div" class="d-flex flex-column align-items-center">
-        <input type="text" id="username" name="username" class="form-control  m-1" value="" placeholder="Username" />
-        <input type="password" id="password" name="password" class="form-control  m-1" value="" placeholder="Password"
+        <input type="text" id="username" name="username" class="form-control m-1" value="" placeholder="Username" />
+        <input type="password" id="password" name="password" class="form-control m-1" value="" placeholder="Password"
           autocomplete="off" />
         <div>
           <input type="checkbox" id="show-password"> Mostrar Contraseña
         </div>
       </div>
       <div class=" d-flex flex-row justify-content-center text-center w-100">
-        <button type="submit" id="login-btn" class="btn btn-success w-50 m-1">
-          Ingresar
+        <button type="submit" id="login-btn" class="btn btn-primary  m-1 w-50">
+          Registrarse
         </button>
       </div>
     </form>
 
-    <div class=" d-flex flex-column align-items-center text-center w-100  ">
-      <div>No posee una cuenta ?</div>
-      <button onclick="location.href='/signup'" class="btn btn-primary w-50  ">
-        Registrarse
+    <div class=" d-flex flex-column align-items-center text-center w-100 ">
+      <div><br></div>
+      <button onclick="location.href='/login'" class="btn btn-success w-50 ">
+        Volver a Login
       </button>
     </div>
+
+
 
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-  <script type="module" src="/login.js"></script>
+  <!-- <script type="module" src="/login.js"></script> -->
   <footer class="mt-auto footer">
     <%- include('../partials/footer')%>
   </footer>

@@ -20,7 +20,7 @@
   class="container d-flex flex-column align-items-center justify-content-center w-25 m-auto text-center bg-danger bg-opacity-30 fs-2 rounded"
   style="height:30rem">
   <div>
-    USER ERROR LOGIN
+    USER ERROR SIGNUP
   </div>
   <div class="fs-5">
     Redirigiendo en <span id="time">3</span> segundos
@@ -29,8 +29,8 @@
     <span class="visually-hidden ">Loading...</span>
   </div>
   <div>
-    <a href="/login">
-      <button class="btn btn-warning mt-5">Volver a Log in</button>
+    <a href="/signup">
+      <button class="btn btn-warning mt-5">Volver a Sign Up</button>
     </a>
   </div>
 </div>
@@ -46,7 +46,7 @@
         document.getElementById("time").innerText = a
       } else {
         clearInterval()
-        location.href = "/login"
+        location.href = "/signup"
       }
     }, 1000)
 
