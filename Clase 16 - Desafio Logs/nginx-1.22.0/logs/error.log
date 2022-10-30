@@ -1,0 +1,49 @@
+2022/10/15 15:32:18 [notice] 18904#19000: signal process started
+2022/10/15 15:32:32 [error] 8912#18000: *1 CreateFile() "C:\Users\FranLagorio\Desktop\nginx-1.22.0/html/favicon.ico" failed (2: El sistema no puede encontrar el archivo especificado), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2022/10/15 15:47:48 [error] 8912#18000: *7 CreateFile() "C:\Users\FranLagorio\Desktop\nginx-1.22.0/html/8081" failed (2: El sistema no puede encontrar el archivo especificado), client: 127.0.0.1, server: localhost, request: "GET /8081 HTTP/1.1", host: "127.0.0.1"
+2022/10/15 15:47:49 [error] 8912#18000: *7 CreateFile() "C:\Users\FranLagorio\Desktop\nginx-1.22.0/html/favicon.ico" failed (2: El sistema no puede encontrar el archivo especificado), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/8081"
+2022/10/15 15:49:36 [notice] 13168#14264: signal process started
+2022/10/15 15:54:14 [notice] 15228#9348: signal process started
+2022/10/15 15:57:41 [error] 5560#17108: *23 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /datos/ HTTP/1.1", upstream: "http://127.0.0.1:8082/datos/", host: "localhost"
+2022/10/15 15:57:42 [error] 5560#17108: *23 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /datos/ HTTP/1.1", upstream: "http://127.0.0.1:8081/datos/", host: "localhost"
+2022/10/22 20:06:52 [emerg] 9572#5512: duplicate upstream "node_app" in C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/conf/nginx.conf:12
+2022/10/22 20:07:12 [notice] 16876#18784: signal process started
+2022/10/22 20:07:12 [error] 16876#18784: OpenEvent("Global\ngx_reload_18992") failed (2: El sistema no puede encontrar el archivo especificado)
+2022/10/22 20:07:47 [notice] 10876#12268: signal process started
+2022/10/22 20:07:47 [error] 10876#12268: OpenEvent("Global\ngx_reload_18992") failed (2: El sistema no puede encontrar el archivo especificado)
+2022/10/22 20:08:18 [notice] 12120#16404: signal process started
+2022/10/22 20:09:31 [notice] 10348#18924: signal process started
+2022/10/22 20:15:11 [notice] 10964#5032: signal process started
+2022/10/22 20:15:32 [notice] 13044#19284: signal process started
+2022/10/22 20:15:32 [error] 13044#19284: CreateFile() "C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2022/10/22 20:17:02 [notice] 9560#19124: signal process started
+2022/10/22 20:17:15 [error] 7580#15748: *4 "C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/../desafioCoder/public/index.html" is not found (3: El sistema no puede encontrar la ruta especificada), client: 127.0.0.1, server: mginx_node, request: "GET / HTTP/1.1", host: "localhost"
+2022/10/22 20:17:15 [error] 7580#15748: *4 "C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/../desafioCoder/public/index.html" is not found (3: El sistema no puede encontrar la ruta especificada), client: 127.0.0.1, server: mginx_node, request: "GET / HTTP/1.1", host: "localhost"
+2022/10/22 20:17:20 [error] 7580#15748: *4 "C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/../desafioCoder/public/index.html" is not found (3: El sistema no puede encontrar la ruta especificada), client: 127.0.0.1, server: mginx_node, request: "GET / HTTP/1.1", host: "localhost"
+2022/10/22 20:17:28 [error] 7580#15748: *4 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /API/RANDOMS HTTP/1.1", upstream: "http://127.0.0.1:8081/API/RANDOMS", host: "localhost"
+2022/10/22 20:18:04 [error] 7344#16008: *1 CreateFile() "C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/../desafioCoder/public/80" failed (3: El sistema no puede encontrar la ruta especificada), client: 127.0.0.1, server: mginx_node, request: "GET /80 HTTP/1.1", host: "localhost"
+2022/10/22 20:18:23 [error] 7344#16008: *1 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /api/randoms HTTP/1.1", upstream: "http://127.0.0.1:8081/api/randoms", host: "localhost"
+2022/10/22 20:20:36 [notice] 16872#8312: signal process started
+2022/10/22 20:21:46 [error] 7592#12412: *1 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /api/randoms HTTP/1.1", upstream: "http://127.0.0.1:8081/api/randoms", host: "localhost"
+2022/10/22 20:25:43 [error] 7592#12412: *18 CreateFile() "C:\Users\FranLagorio\Desktop\BackEndCoderhouse\Clase 15 - Clusters\nginx-1.22.0/../desafioCoder/public/8081" failed (3: El sistema no puede encontrar la ruta especificada), client: 127.0.0.1, server: mginx_node, request: "GET /8081 HTTP/1.1", host: "localhost"
+2022/10/23 10:44:54 [error] 7592#12412: *42 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /api/randoms HTTP/1.1", upstream: "http://127.0.0.1:8081/api/randoms", host: "localhost"
+2022/10/23 10:46:38 [error] 7592#12412: *42 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /api/randoms HTTP/1.1", upstream: "http://127.0.0.1:8081/api/randoms", host: "localhost"
+2022/10/23 10:53:17 [notice] 21864#14820: signal process started
+2022/10/23 10:53:43 [error] 20884#20184: *60 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /login HTTP/1.1", upstream: "http://127.0.0.1:8080/login", host: "localhost"
+2022/10/23 10:54:40 [error] 20280#7632: *1 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /login HTTP/1.1", upstream: "http://127.0.0.1:8080/login", host: "localhost"
+2022/10/23 10:54:55 [notice] 20108#19344: signal process started
+2022/10/23 10:55:03 [notice] 15372#20492: signal process started
+2022/10/23 10:55:22 [error] 20988#20204: *1 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /login HTTP/1.1", upstream: "http://127.0.0.1:8080/login", host: "localhost"
+2022/10/23 10:55:42 [error] 20988#20204: *1 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /login HTTP/1.1", upstream: "http://127.0.0.1:8080/login", host: "localhost"
+2022/10/23 10:56:41 [notice] 17292#19724: signal process started
+2022/10/23 10:56:46 [error] 18936#20184: *7 connect() failed (10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión) while connecting to upstream, client: 127.0.0.1, server: mginx_node, request: "GET /api/randoms HTTP/1.1", upstream: "http://127.0.0.1:8080/api/randoms", host: "localhost"
+2022/10/23 10:57:29 [notice] 11004#21272: signal process started
+2022/10/23 11:00:15 [notice] 20260#22328: signal process started
+2022/10/23 11:00:26 [notice] 19984#18940: signal process started
+2022/10/23 11:00:44 [notice] 18484#7600: signal process started
+2022/10/23 11:01:00 [notice] 11728#2360: signal process started
+2022/10/23 11:01:28 [notice] 20632#22484: signal process started
+2022/10/23 11:01:36 [notice] 9656#17500: signal process started
+2022/10/23 11:06:17 [notice] 20396#16988: signal process started
+2022/10/23 11:11:39 [notice] 19828#21832: signal process started
+2022/10/23 11:17:15 [notice] 21912#8760: signal process started
