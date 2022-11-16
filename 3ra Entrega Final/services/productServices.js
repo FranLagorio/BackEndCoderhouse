@@ -2,7 +2,8 @@ const { findAll } = require("../daos/productsDaos");
 
 const ProductManager = {
   getAll: async () => {
-    return await findAll();
+    let products = await findAll();
+    return products;
   },
 };
 

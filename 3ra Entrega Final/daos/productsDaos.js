@@ -1,7 +1,8 @@
 const Products = require("../models/productSchema");
 
 async function findAll() {
-  return await Products.find({});
+  let products = await Products.find({});
+  return products;
 }
 
 module.exports = { findAll };
