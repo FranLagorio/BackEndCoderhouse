@@ -27,9 +27,12 @@
         </h2>
         <p>Edad: <%= user.age %>
         </p>
-        <p>Direccion: <%= user.addres %>
+        <p>Direccion: <%= user.address %>
         </p>
         <p>Numero: <%= user.phone %>
+        </p>
+        </p>
+        <p>Email: <%= user.username %>
         </p>
       </div>
     </div>
@@ -41,10 +44,7 @@
   <footer class="mt-auto footer">
     <%- include('../partials/footer')%>
   </footer>
-  <script>document.getElementById("userInfo").classList.remove("d-none");</script>
-  <script>document.getElementById("products").classList.remove("d-none");</script>
-  <script>document.getElementById("cart").classList.remove("d-none");</script>
-  <script>document.getElementById("logout").classList.remove("d-none");</script>
+  <script src="/js/navBarValidate.js"></script>
 </body>
 
 </html>
