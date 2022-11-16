@@ -86,3 +86,6 @@
 {"level":"warn","message":{"URL":"/url.com","method":"GET"}}
 {"level":"warn","message":{"URL":"/home/products","method":"GET"}}
 {"level":"warn","message":{"URL":"/home/info","method":"GET"}}
+{"level":"warn","message":{"URL":"/home/uploads/2c8c68a7-d9f4-4a3c-a2e2-f96148d3b308.jpg","method":"GET"}}
+{"level":"warn","message":{"URL":"/home/products","method":"GET"}}
+{"level":"warn","message":{"URL":"/home/products","method":"GET"}}
