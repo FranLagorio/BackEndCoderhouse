@@ -8,7 +8,7 @@ import MongoStore from "connect-mongo";
 
 //Creacion de Servidor y Sockets
 const app = express();
-const PORT = process.env.port || 8080;
+const PORT = process.env.port || 8085;
 const httpServer = createServer(app);
 const io = new Server(httpServer, {});
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true };

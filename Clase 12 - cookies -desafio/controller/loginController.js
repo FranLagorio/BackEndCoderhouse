@@ -6,6 +6,7 @@ export const loginController = {
     return res.status(401).render("pages/errorLogin");
   },
   get: (req, res) => {
+    console.log(req.session);
     try {
       if (req.session.username != undefined) {
         res.render("pages/home", { name: req.session.username });
