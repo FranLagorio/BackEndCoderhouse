@@ -39,4 +39,27 @@ const sendEmail = async ({ username, name, age, address, phone, image }) => {
   }
 };
 
-module.exports = { sendEmail };
+const sendPurchaseEmail = async (formattedProducts, user) => {
+  try {
+    const { username, name, age, address, phone, image } = user;
+
+    const mailOptions = {
+      from: process.env.TEST_MAIL,
+      to: process.env.TEST_MAIL,
+      subject: `Nuevo pedido de: ${name}, ${username}`,
+      html: `
+      <h1>NUEVO PEDIDO</h1>
+        
+      <div>La compra fue la siguiente:</div>
+      <div><p>${formattedProducts.join("</p><p>")}</p></div>
+      </div>
+      `,
+    };
+    const info = await transporter.sendMail(mailOptions);
+    logger.info({ message: "mail enviado", info });
+  } catch (err) {
+    errorLogger.error(err);
+  }
+};
+
+module.exports = { sendEmail, sendPurchaseEmail };

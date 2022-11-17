@@ -1,9 +1,12 @@
 const passport = require("passport");
 const { Strategy: LocalStrategy } = require("passport-local");
 
-const Users = require("../../models/userSchema");
-const { logger } = require("../utils/loggers");
-const { isValidPassword, createHash } = require("../utils/passwordsFunctions");
+const Users = require("../models/userSchema");
+const { logger } = require("../src/utils/loggers");
+const {
+  isValidPassword,
+  createHash,
+} = require("../src/utils/passwordsFunctions");
 
 const loginPassport = {
   localStrategy: new LocalStrategy((username, password, done) => {
@@ -34,6 +37,7 @@ const signUpPassport = {
 
           return done(error);
         }
+
         if (user) {
           logger.info({ message: "User already exists" });
           return done(null, false);
@@ -49,6 +53,7 @@ const signUpPassport = {
           password: createHash(password),
           image: req.file.filename,
         };
+
         Users.create(newUser, (err, user) => {
           if (err) {
             logger.error({ message: "Error in Saving user: " + err });

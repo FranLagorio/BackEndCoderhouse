@@ -1,5 +1,5 @@
 const { errorLogger } = require("../src/utils/loggers");
-const { sendEmail } = require("../services/emailService");
+const { sendEmail } = require("../services/emailServices");
 
 const signupController = {
   get: (req, res) => {

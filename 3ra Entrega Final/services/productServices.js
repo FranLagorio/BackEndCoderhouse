@@ -1,10 +1,52 @@
-const { findAll } = require("../daos/productsDaos");
+const {
+  getById,
+  getAll,
+  save,
+  delet,
+  update,
+} = require("../daos/productsDaos");
 
-const ProductManager = {
-  getAll: async () => {
-    let products = await findAll();
-    return products;
-  },
+const getProducts = async () => {
+  return await getAll();
 };
 
-module.exports = ProductManager;
+const getProduct = async (id) => {
+  return await getById(id);
+};
+
+const saveProduct = async (product) => {
+  let necessaryProps = [
+    "name",
+    // "description",
+    // "code",
+    "thumbnail",
+    "price",
+    "stock",
+  ];
+  let keys = Object.keys(product);
+  let check = (arr, target) => target.every((e) => arr.includes(e));
+  let validation = check(keys, necessaryProps);
+
+  if (validation) {
+    product.timestamp = new Date().toString();
+    await save(product);
+    return product;
+  } else {
+    throw new Error("Faltan propiedades");
+  }
+};
+const deleteProduct = async (id) => {
+  return await delet(id);
+};
+
+const updateProduct = async (id, newBody) => {
+  await update(id, newBody);
+};
+
+module.exports = {
+  getProducts,
+  getProduct,
+  saveProduct,
+  deleteProduct,
+  updateProduct,
+};

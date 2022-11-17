@@ -5,7 +5,7 @@ const {
   signUpPassport,
   serializeUser,
   deserializeUser,
-} = require("../src/config/passportConfig");
+} = require("./passportMiddleware");
 const { redisSession } = require("../src/config/redisSessionConfig");
 
 const sessionMiddleware = (app) => {

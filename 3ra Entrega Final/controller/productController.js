@@ -1,21 +1,42 @@
-const { ProductManager } = require("../../src/daos/mainDaos");
-
-const productManager = new ProductManager();
+const {
+  getProducts,
+  getProduct,
+  saveProduct,
+  deleteProduct,
+  updateProduct,
+} = require("../services/productServices");
 
 const productController = {
   get: async (req, res) => {
     try {
-      const { id } = req.params;
-      let found;
-      if (id === "all") {
-        found = await productManager.getAll();
+      let products = await getProducts();
+      if (req.headers.postman) {
+        res
+          .status(200)
+          .json({
+            products,
+          })
+          .end();
       } else {
-        found = await productManager.getById(id);
+        res.render("pages/products", {
+          products,
+          message: false,
+        });
       }
-      res.status(200).send({
-        status: 200,
-        data: { found },
-        message: "Get successfully",
+    } catch (error) {
+      res.status(500).send({
+        status: 500,
+        error: error.message,
+      });
+    }
+  },
+
+  getIdProduct: async (req, res) => {
+    const { id } = req.params;
+    try {
+      let products = await getProduct(id);
+      res.status(200).json({
+        products,
       });
     } catch (error) {
       res.status(500).send({
@@ -24,36 +45,15 @@ const productController = {
       });
     }
   },
-  save: async (req, res) => {
-    let necessaryProps = [
-      "name",
-      "description",
-      "code",
-      "thumbnail",
-      "price",
-      "stock",
-    ];
+
+  post: async (req, res) => {
     try {
       const { body } = req;
-      //Check de si estan todas las props necesarias
-      let keys = Object.keys(body);
-      let check = (arr, target) => target.every((e) => arr.includes(e));
-      let validation = check(keys, necessaryProps);
-      if (validation) {
-        await productManager.save(body);
-        let products = await productManager.getAll();
-        res.status(200).send({
-          status: 200,
-          data: { products },
-          message: "Uploaded Product",
-        });
-      } else {
-        res.status(500).send({
-          status: 500,
-          message:
-            "Must submit all necessary props:name,description,code,thumbnail, price, stock",
-        });
-      }
+      let product = await saveProduct(body);
+
+      res.status(200).json({
+        product,
+      });
     } catch (error) {
       res.status(500).send({
         status: 500,
@@ -61,14 +61,14 @@ const productController = {
       });
     }
   },
+
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      let productToDelete = await productManager.deleteById(id);
-      res.status(200).send({
-        status: 200,
-        data: { productToDelete },
-        message: `Product Deleted successfully`,
+      await deleteProduct(id);
+
+      res.status(200).json({
+        message: "Producto borrado " + id,
       });
     } catch (error) {
       res.status(500).send({
@@ -77,11 +77,12 @@ const productController = {
       });
     }
   },
+
   put: async (req, res) => {
     try {
       const { id } = req.params;
       const { body } = req;
-      let puttedProduct = await productManager.updateById(id, body);
+      let puttedProduct = await updateProduct(id, body);
       res.status(200).send({
         status: 200,
         data: { product: puttedProduct },
