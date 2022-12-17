@@ -1,4 +1,5 @@
 const { errorLogger } = require("../src/utils/loggers");
+const { sendEmail } = require("../services/emailServices");
 
 const signupController = {
   get: (req, res) => {
@@ -17,16 +18,18 @@ const signupController = {
         .send({ status: "Get page Sign Up error", body: error });
     }
   },
-  postsignup: (req, res) => {
+  postsignup: async (req, res) => {
     try {
-      const { username } = req.user;
-      req.session.username = username;
+      req.session.username = req.user;
+      await sendEmail(req.user);
       res.redirect("/home");
     } catch (error) {
       errorLogger.error({
         error: error.message,
       });
-      return res.status(500).send({ status: "Sign Up error", body: error });
+      return res
+        .status(500)
+        .send({ status: "Sign Up error", body: error.message });
     }
   },
 

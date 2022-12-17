@@ -1,17 +1,9 @@
-//import { Router } from "express";
-
 const { Router } = require("express");
 const homeRouter = Router();
 
-homeRouter.get("/", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.render("pages/home", {
-      name: req.session.username,
-    });
-  } else {
-    res.redirect("/login/faillogin");
-  }
-});
+const homeController = require("../controller/homeController");
 
-//export default homeRouter;
+homeRouter.get("/", homeController.get);
+homeRouter.get("/info", homeController.getInfo);
+
 module.exports = homeRouter;

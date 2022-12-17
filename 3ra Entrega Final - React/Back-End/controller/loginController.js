@@ -1,54 +1,36 @@
-const { errorLogger } = require("../src/utils/loggers");
+const { errorLogger, urlMethodError } = require("../src/utils/loggers");
 
 const loginController = {
   get: (req, res) => {
     try {
-      console.log(req.isAuthenticated());
       if (req.isAuthenticated()) {
-        // res.redirect("/home");
-        res.status(200).send({ authenticated: true });
+        res.redirect("/home");
       } else {
-        res.status(200).send({ authenticated: false });
+        res.status(200).render("pages/login");
       }
     } catch (error) {
-      errorLogger.error({
-        URL: req.originalUrl,
-        method: req.method,
-        error: error.message,
-      });
+      errorLogger.error(urlMethodError(req));
       return res
         .status(500)
         .send({ status: "Get page Log In error", body: error });
     }
   },
-  postLogin: (req, res, next) => {
+  postLogin: (req, res) => {
     try {
-      const { username } = req.body.username;
-
+      const { username } = req.user;
       req.session.username = username;
-
-      res
-        .status(200)
-        .send({ username: req.body.username, gustos: ["futbol", "fifa"] });
+      res.status(200).redirect("/home");
     } catch (error) {
-      errorLogger.error({
-        URL: req.originalUrl,
-        method: req.method,
-        error: error.message,
-      });
+      errorLogger.error(urlMethodError(req));
       return res.status(500).send({ status: "Log In error", body: error });
     }
   },
 
   errorLogin: (req, res) => {
     try {
-      res.status(200).render("pages/errorLogin");
+      res.status(200).render("pages/failLogin");
     } catch (error) {
-      errorLogger.error({
-        URL: req.originalUrl,
-        method: req.method,
-        error: error.message,
-      });
+      errorLogger.error(urlMethodError(req));
       res.status(500).send({ status: "Log In error", body: error });
     }
   },

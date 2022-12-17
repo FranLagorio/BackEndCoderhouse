@@ -4,7 +4,10 @@ const logger = winston.createLogger({
   format: winston.format.json(),
   transports: [
     new winston.transports.Console({ level: "info" }),
-    new winston.transports.File({ filename: "warn.log", level: "warn" }),
+    new winston.transports.File({
+      filename: "./src/utils/warn.log",
+      level: "warn",
+    }),
   ],
 });
 
@@ -12,8 +15,17 @@ const errorLogger = winston.createLogger({
   format: winston.format.json(),
   transports: [
     new winston.transports.Console({ level: "error" }),
-    new winston.transports.File({ filename: "error.log", level: "error" }),
+    new winston.transports.File({
+      filename: "./src/utils/error.log",
+      level: "error",
+    }),
   ],
 });
 
-module.exports = { logger, errorLogger };
+const urlMethodError = (req) => ({
+  URL: req.originalUrl,
+  method: req.method,
+  error: error.message,
+});
+
+module.exports = { logger, errorLogger, urlMethodError };

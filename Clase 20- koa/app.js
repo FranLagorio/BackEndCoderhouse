@@ -5,8 +5,8 @@ const app = new Koa();
 
 app.use(koaBody());
 
-let { books } = require("./books.js");
-app.use(books.routes());
+let { products } = require("./products.js");
+app.use(products.routes());
 
 const PORT = 8080;
 const server = app.listen(PORT, () => {

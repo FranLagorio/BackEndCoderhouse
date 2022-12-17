@@ -25,13 +25,17 @@ table {
   width: 20%;
 }
 
-.footer {
-  height: 4rem;
-  font-size: 2rem;
+.footer,
+.nav {
+  font-size: 1.5rem;
   color: black;
 }
 
 a:hover {
   font-weight: bold;
   background: rgba(1, 1, 1, 0.5);
+}
+
+.iti--allow-dropdown {
+  width: 100%;
 }
