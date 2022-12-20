@@ -19,9 +19,9 @@ const loginPassport = {
       }
       if (!isValidPassword(user, password)) {
         logger.info({ message: "Invalid Password" });
-
         return done(null, false);
       }
+
       return done(null, user);
     });
   }),

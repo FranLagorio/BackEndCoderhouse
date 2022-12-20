@@ -19,7 +19,8 @@ const loginController = {
     try {
       const { username } = req.user;
       req.session.username = username;
-      res.status(200).redirect("/home");
+      // res.status(200).send(user);
+      res.send(req.user);
     } catch (error) {
       errorLogger.error(urlMethodError(req));
       return res.status(500).send({ status: "Log In error", body: error });
