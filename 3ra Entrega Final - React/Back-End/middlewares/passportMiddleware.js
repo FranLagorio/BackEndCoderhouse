@@ -1,6 +1,9 @@
 const passport = require("passport");
 const { Strategy: LocalStrategy } = require("passport-local");
 
+const JWTStrategy = require("passport-jwt").Strategy;
+const ExtractJWT = require("passport-jwt").ExtractJwt;
+
 const Users = require("../models/userSchema");
 const { logger } = require("../src/utils/loggers");
 const {
@@ -14,7 +17,6 @@ const loginPassport = {
       if (err) return done(err);
       if (!user) {
         logger.info({ message: "User not found with username " + username });
-
         return done(null, false);
       }
       if (!isValidPassword(user, password)) {
@@ -45,13 +47,13 @@ const signUpPassport = {
 
         const { name, age, address, phone } = req.body;
         const newUser = {
+          username: username,
+          password: createHash(password),
           name,
           age,
           address,
           phone,
-          username: username,
-          password: createHash(password),
-          image: req.file.filename,
+          image: req.file?.filename ? req.file.filename : "",
         };
 
         Users.create(newUser, (err, user) => {
@@ -65,6 +67,22 @@ const signUpPassport = {
           return done(null, user);
         });
       });
+    }
+  ),
+};
+
+const passportJwt = {
+  strategy: new JWTStrategy(
+    {
+      secretOrKey: "top_secret",
+      jwtFromRequest: ExtractJWT.fromUrlQueryParameter("secret_token"),
+    },
+    async (token, done) => {
+      try {
+        return done(null, token.user);
+      } catch (error) {
+        return next(error);
+      }
     }
   ),
 };
@@ -85,4 +103,5 @@ module.exports = {
   signUpPassport,
   serializeUser,
   deserializeUser,
+  passportJwt,
 };

@@ -5,6 +5,7 @@ const {
   signUpPassport,
   serializeUser,
   deserializeUser,
+  passportJwt,
 } = require("./passportMiddleware");
 const { redisSession } = require("../src/config/redisSessionConfig");
 
@@ -13,6 +14,8 @@ const sessionMiddleware = (app) => {
 
   passport.use("login", loginPassport.localStrategy);
   passport.use("signup", signUpPassport.localStrategy);
+  passport.use("jwt", passportJwt.strategy);
+
   serializeUser();
   deserializeUser();
 

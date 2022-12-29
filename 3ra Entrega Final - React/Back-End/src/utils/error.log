@@ -37,3 +37,4 @@
 {"level":"error","message":{"error":"Cannot read properties of undefined (reading 'findOne')"}}
 {"level":"error","message":{"error":"Cannot read properties of undefined (reading 'findOne')"}}
 {"level":"error","message":{"error":"Cannot read properties of undefined (reading 'findOneAndUpdate')"}}
+{"level":"error","message":{"error":"errorLogger is not defined"}}

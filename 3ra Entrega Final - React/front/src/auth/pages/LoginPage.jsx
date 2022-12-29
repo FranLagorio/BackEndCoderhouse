@@ -14,12 +14,19 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 import { CardBody, Input, FormFeedback, Label, Form } from "reactstrap";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserComponentContext";
 
 const handleGoogleSubmit = () => {
   alert("Pronto podras conectarte con tu cuenta de Google");
 };
 
 export const LoginPage = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   const validation = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -31,13 +38,12 @@ export const LoginPage = () => {
       password: Yup.string().required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
-      // dispatch(loginUser(values, props.router.navigate))
       const user = {
         username: values.email,
         password: values.password,
       };
-      // console.log(user);
-      loginUser(user);
+
+      loginUser(user, setUser);
     },
   });
 
@@ -100,7 +106,6 @@ export const LoginPage = () => {
                         ? true
                         : false
                     }
-                    cd
                   />
                   {validation.touched.password && validation.errors.password ? (
                     <FormFeedback type="invalid">

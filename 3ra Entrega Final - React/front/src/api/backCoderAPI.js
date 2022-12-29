@@ -4,13 +4,13 @@ export const backendAPI = axios.create({
   baseURL: "http://localhost:8080/",
 });
 
-export const loginUser = (body) => {
+export const loginUser = (body, setUser) => {
   axios
     .post("http://localhost:8080/login", body)
     .then(function (response) {
-      console.log("todo ok", response.data);
+      setUser({ ...response.data });
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error.response.data);
     });
 };

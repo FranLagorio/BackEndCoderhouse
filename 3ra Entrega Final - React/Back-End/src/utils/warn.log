@@ -115,3 +115,9 @@
 {"level":"warn","message":{"URL":"/cart63753bd46676eb9283a1116a","method":"DELETE"}}
 {"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
 {"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
+{"level":"warn","message":{"URL":"/singup","method":"POST"}}
+{"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
+{"level":"warn","message":{"URL":"/login=secrete_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzNzVjMjZmOTk1NDI4NTdhNDJkODQzNiIsImVtYWlsIjoiZnJhbmxhZ29yaW9AZ21haWwuY29tIn0sImlhdCI6MTY3MjI4MjI2NH0.N-ksMQloVGffAi6j0PgJS8zFH8kyCOL9F7dhpHMfjKI","method":"GET"}}
+{"level":"warn","message":{"URL":"/home=secrete_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzNzVjMjZmOTk1NDI4NTdhNDJkODQzNiIsImVtYWlsIjoiZnJhbmxhZ29yaW9AZ21haWwuY29tIn0sImlhdCI6MTY3MjI4MjI2NH0.N-ksMQloVGffAi6j0PgJS8zFH8kyCOL9F7dhpHMfjKI","method":"GET"}}
+{"level":"warn","message":{"URL":"/home=secrete_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzNzVjMjZmOTk1NDI4NTdhNDJkODQzNiIsImVtYWlsIjoiZnJhbmxhZ29yaW9AZ21haWwuY29tIn0sImlhdCI6MTY3MjI4MjI2NH0.N-ksMQloVGffAi6j0PgJS8zFH8kyCOL9F7dhpHMfjKI","method":"GET"}}
+{"level":"warn","message":{"URL":"/lgoin","method":"GET"}}

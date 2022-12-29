@@ -6,18 +6,19 @@ import { AppRouter } from "./router/AppRouter";
 import { AppTheme } from "./theme";
 
 import "./assets/scss/styles.scss";
+import { UserComponentContext } from "./context/UserComponentContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <UserComponentContext>
     <BrowserRouter>
-      {/* <Provider> */}
       <CssBaseline />
       <AppTheme>
         <AppRouter />
       </AppTheme>
-      {/* </Provider> */}
     </BrowserRouter>
-  </React.StrictMode>
+  </UserComponentContext>
+  //</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
